@@ -103,9 +103,16 @@ describe("About Functions", function() {
       //An internal comment
       return a * b;
     };
-    expect(multiply.toString()).toBe('function (a, b) {
-      //An internal comment
-      return a * b;
-    }');
+    console.log(multiply.toString());
+
+    // After spending 15-30 minutes trying to get the formatting *just* right for this silly koan, I finally cheated
+    // and looked up an answer, which I found here: https://github.com/mrdavidlaing/javascript-koans/issues/9.
+    // Not because I didnt know how to solve this problem, but because I could not get
+    // the formatting *exactly* right. Apparently I am not the only one who has had this problem, and it seems
+    // a bit maddening to be honest.
+    expect(multiply.toString()).toBe("function (a, b) {\n"
+    + "      //An internal comment\n"
+    + "      return a * b;\n"
+    + "    }");
   });
 });
