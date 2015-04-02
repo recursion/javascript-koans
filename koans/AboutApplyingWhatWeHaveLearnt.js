@@ -98,8 +98,18 @@ describe("About Applying What We Have Learnt", function() {
     var ingredientCount = { "{ingredient name}": 0 };
 
     /* chain() together map(), flatten() and reduce() */
-
-    expect(ingredientCount['mushrooms']).toBe(FILL_ME_IN);
+    _(products).chain()
+      .map(function(x) {
+        return x.ingredients;
+      })
+      .flatten()
+      .reduce(function (accumulator, x) {
+        // I wasnt sure if this was ok to do since Im not using the accumulator at all,
+        // nor am I returning any values here, however, it totally did what I needed it to!
+        ingredientCount[x] = (ingredientCount[x] || 0 ) +  1;
+      })
+      .value();
+    expect(ingredientCount['mushrooms']).toBe(2);
   });
 
   /*********************************************************************************/
